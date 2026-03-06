@@ -6,4 +6,4 @@ VALUES
 ("Lebron James", "Los Angeles Lakers", "SF", 44, 21.4, 5.6, 7.0, 50.4),
 ("Stephen Curry", "Golden State Warriors", "PG", 38, 27.3, 3.5, 4.8, 46.8),
 ("Nikola Jokic", "Denver Nuggets", "C", 47, 28.6, 12.6, 10.4, 57.2),
-("Shai Gilgeous-Alexander", "Oklahoma City Thunder", "SG", 52, 31.7, 4.4, 6.5. 55.1)
+("Shai Gilgeous-Alexander", "Oklahoma City Thunder", "SG", 52, 31.7, 4.4, 6.5, 55.1)
