@@ -1,33 +1,63 @@
--- NBA SQL Analysis Queries
+-- =========================================
+-- NBA Stats Explorer - Analysis Queries
+-- =========================================
 
--- Show all players in the table
+-- 1. Show all players
 SELECT *
 FROM player_stats;
 
--- Top scorers (highest PPG first)
-SELECT player_name, ppg
+-- 2. Top 10 scorers
+SELECT player_name, team, ppg
 FROM player_stats
+ORDER BY ppg DESC
+LIMIT 10;
+
+-- 3. Top 10 rebounders
+SELECT player_name, team, rpg
+FROM player_stats
+ORDER BY rpg DESC
+LIMIT 10;
+
+-- 4. Top 10 assist leaders
+SELECT player_name, team, apg
+FROM player_stats
+ORDER BY apg DESC
+LIMIT 10;
+
+-- 5. Players averaging more than 25 points per game
+SELECT player_name, team, ppg
+FROM player_stats
+WHERE ppg > 25
 ORDER BY ppg DESC;
 
--- Players averaging more than 30 PPG
-SELECT player_name, ppg
+-- 6. Average points per game by position
+SELECT position, AVG(ppg) AS avg_ppg
 FROM player_stats
-WHERE ppg > 30;
+GROUP BY position
+ORDER BY avg_ppg DESC;
 
--- Average points per game across all players
-SELECT AVG(ppg)
-FROM player_stats;
-
--- Total number of players
-SELECT COUNT(*)
-FROM player_stats;
-
--- Average points per team
-SELECT team, AVG(ppg)
+-- 7. Average rebounds per game by position
+SELECT position, AVG(rpg) AS avg_rpg
 FROM player_stats
-GROUP BY team;
+GROUP BY position
+ORDER BY avg_rpg DESC;
 
--- Number of players per team
-SELECT team, COUNT(*)
+-- 8. Average assists per game by position
+SELECT position, AVG(apg) AS avg_apg
 FROM player_stats
+GROUP BY position
+ORDER BY avg_apg DESC;
+
+-- 9. Highest field-goal percentages among players with at least 20 games played
+SELECT player_name, team, fg_pct
+FROM player_stats
+WHERE games_played >= 20
+ORDER BY fg_pct DESC
+LIMIT 10;
+
+-- 10. Number of players in each position
+SELECT position, COUNT(*) AS player_count
+FROM player_stats
+GROUP BY position
+ORDER BY player_count DESC;
 GROUP BY team;
